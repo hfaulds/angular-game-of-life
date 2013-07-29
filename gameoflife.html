@@ -1,0 +1,34 @@
+<html data-ng-app  data-ng-controller='GameOfLifeController'>
+  <head>
+    <script src='angular.min.js'></script>
+    <script src='got_controller.js'></script>
+    <style>
+      .cell {
+        position: absolute;
+        background-color:black;
+        font-size:2px;
+        color:white;
+      }
+    </style>
+  </head>
+  <body data-ng-click='createCell($event)'
+        data-ng-init='cells=[
+          {x:9, y:11}, 
+          {x:10, y:12},
+          {x:10, y:13},
+          {x:9, y:13},
+          {x:8, y:13}
+        ]'>
+    <button data-ng-hide='running' data-ng-click='start()'>start</button>
+    <button data-ng-show='running' data-ng-click='pause()'>pause</button>
+
+    <div data-ng-repeat='cell in cells'>
+      <div class='cell' style='top:{{cell.x*10}};
+                               left:{{cell.y*10}};
+                               width:{{cellSize}};
+                               height:{{cellSize}}'>
+        {{cell.x}},{{cell.y}}
+      </div>
+    </div>
+  </body>
+</html>
